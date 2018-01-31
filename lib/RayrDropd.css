@@ -1,0 +1,38 @@
+.rayr-dropd {
+  position: relative;
+  display: inline-block;
+}
+
+.rayr-dropd .rayr-d-title {
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.rayr-dropd .rayr-d-title:hover {
+  border-color: #421341;
+}
+
+.rayr-dropd .rayr-d-content {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  transition: border-color 0.2s;
+  background-color: #fff;
+}
+
+.rayr-dropd .rayr-d-content:hover {
+  border-color: #421341;
+}
+
+.rayr-dropd .rayr-d-content.show {
+  visibility: visible;
+}
+
+.rayr-dropd .rayr-d-content.hide {
+  visibility: hidden;
+}

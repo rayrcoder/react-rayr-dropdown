@@ -1,0 +1,33 @@
+.rayr-dropd {
+    position: relative;
+    display: inline-block;
+    .rayr-d-title{
+        cursor: pointer;
+        display: inline-block;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        transition: border-color 0.2s;
+        &:hover{
+            border-color: #421341;
+        }
+    }
+    .rayr-d-content{
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        border: 1px solid #aaa;
+        border-radius: 4px;
+        transition: border-color 0.2s;
+        background-color: #fff;
+        &:hover{
+            border-color: #421341;
+        }
+        &.show{
+            visibility: visible;
+        }
+        &.hide{
+            visibility: hidden;
+        }
+    }
+}
+

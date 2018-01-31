@@ -1,0 +1,23 @@
+.dropd-demo .dropd-demo-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dropd-demo .dropd-demo-box .dropd-wrapper {
+  margin: 0 auto;
+  padding: 80px 0;
+  flex: 0 0 50%;
+  text-align: center;
+  border-bottom: 1px dashed #000000;
+}
+
+.dropdown-title {
+  width: 200px;
+  text-align: center;
+}
+
+.dropdown-content {
+  background-color: #fff;
+  width: 200px;
+  text-align: center;
+}
