@@ -1,10 +1,10 @@
-import 'react-rayr-dropd/src/RayrDropd.scss';
-import 'react-rayr-dropd/src/demo.scss';
+import 'react-rayr-dropdown/src/RayrDropdown.scss';
+import 'react-rayr-dropdown/src/demo.scss';
 
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropd} from 'react-rayr-dropd';
+import {RayrDropdown} from 'react-rayr-dropdown';
 
 class Title extends React.Component {
     constructor(props) {
@@ -53,7 +53,7 @@ function App() {
             <div className="dropd-demo-box">
                 <div className="dropd-wrapper">
                     <h4>上方弹出</h4>
-                    <RayrDropd
+                    <RayrDropdown
                         titleCom={<Title />}
                         contentCom={<Content />}
                         pos={"top"}
@@ -64,7 +64,7 @@ function App() {
                 </div>
                 <div className="dropd-wrapper">
                     <h4>下方弹出</h4>
-                    <RayrDropd
+                    <RayrDropdown
                         titleCom={<Title />}
                         contentCom={<Content />}
                         pos={"bottom"}
@@ -72,7 +72,7 @@ function App() {
                 </div>
                 <div className="dropd-wrapper">
                     <h4>左边弹出</h4>
-                    <RayrDropd
+                    <RayrDropdown
                         titleCom={<Title />}
                         contentCom={<Content />}
                         pos={"left"}
@@ -80,7 +80,7 @@ function App() {
                 </div>
                 <div className="dropd-wrapper">
                     <h4>右边弹出</h4>
-                    <RayrDropd
+                    <RayrDropdown
                         titleCom={<Title />}
                         contentCom={<Content />}
                         pos={"right"}
@@ -88,7 +88,7 @@ function App() {
                 </div>
                 <div className="dropd-wrapper">
                     <h4>自适应弹出</h4>
-                    <RayrDropd
+                    <RayrDropdown
                         titleCom={<Title />}
                         contentCom={<Content />}
                         pos={"auto"}

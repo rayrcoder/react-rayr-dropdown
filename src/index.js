@@ -1,3 +1,3 @@
-import RayrDropd from './RayrDropd.js';
+import RayrDropdown from './RayrDropdown.js';
 
-export {RayrDropd};
+export {RayrDropdown};

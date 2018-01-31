@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class RayrDropd extends React.Component {
+class RayrDropdown extends React.Component {
 
     static propTypes = {};
 
@@ -115,4 +115,4 @@ class RayrDropd extends React.Component {
     }
 }
 
-export default RayrDropd;
+export default RayrDropdown;

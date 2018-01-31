@@ -1,7 +1,7 @@
 {
-  "name": "react-rayr-dropd",
-  "version": "0.0.1",
-  "description": "react-rayr-dropd",
+  "name": "react-rayr-dropdown",
+  "version": "0.0.5",
+  "description": "react-rayr-dropdown",
   "main": "lib/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development babel-node example/webpack.server.js --hot",
@@ -12,7 +12,7 @@
     "react-component",
     "react",
     "component",
-    "react-rayr-dropd"
+    "react-rayr-dropdown"
   ],
   "dependencies": {
     "classnames": "^2.2.5",
@@ -67,12 +67,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rayrcoder/react-rayr-dropd"
+    "url": "https://github.com/rayrcoder/react-rayr-dropdown"
   },
   "author": "luokaihui",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rayrcoder/react-rayr-dropd/issues"
+    "url": "https://github.com/rayrcoder/react-rayr-dropdown/issues"
   },
-  "homepage": "https://github.com/rayrcoder/react-rayr-dropd"
+  "homepage": "https://github.com/rayrcoder/react-rayr-dropdown"
 }
