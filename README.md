@@ -1,18 +1,18 @@
 # react-rayr-dropdown
 
-## dropdown组件
+## dropdown component
 
-### 组件说明
+### Description
 
 基本的dropdown组件
 
-### 安装
+### Install
 
 ```javascript
 npm install --save react-rayr-dropdown
 ```
 
-### 使用
+### Usage
 
 ```html
 <RayrDropdown
@@ -25,7 +25,7 @@ npm install --save react-rayr-dropdown
 />
 ```
 
-### 参数说明
+### Params
 
 | 参数 | 类型 | 说明 | 默认值 |
 | ----| ----| ----| ------|

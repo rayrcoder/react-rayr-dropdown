@@ -80,8 +80,6 @@ class RayrDropdown extends React.Component {
     }
 
     titleClick(e) {
-
-        console.log('title click');
         this.setPosition();
 
         let style = this.setPosition();
@@ -92,7 +90,6 @@ class RayrDropdown extends React.Component {
     }
 
     contentClick(e) {
-        console.log('content click');
         if(this.props.contentClick){
             // 回调函数
             this.props.contentClick(this);
@@ -101,7 +98,6 @@ class RayrDropdown extends React.Component {
 
     render() {
         let titleCls = this.state.showContent ? 'show' : 'hide';
-
         return (
             <div className="rayr-dropd">
                 <div ref={"dropTitle"} className="rayr-d-title" onClick={this.titleClick.bind(this)}>
