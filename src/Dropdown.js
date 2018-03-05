@@ -1,28 +1,22 @@
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import PropTypes from 'prop-types';
+import PropTypes from 'react-dom';
 import classnames from 'classnames';
 
-class RayrDropdown extends React.Component {
-
-    static propTypes = {};
-
-    static defaultProps = {};
-
+class Dropdown extends React.Component {
     constructor(props) {
-        super(props);
+        super();
         this.state = {
-            position: props.pos || 'auto',// 默认值为auto，其他几个值是left,right,top,bottom
-            titleComponent: props.titleCom || '',
-            contentComponent: props.contentCom || '',
-            contentPos: null,
-            showContent: false,
+            isOpen: false,
+            position: props.pos || 'auto',
+            bodyPos: null,
             offset: 10,
             winWidth: window.innerWidth,
-            winHeight: window.innerHeight
+            winHeight: window.innerHeight,
+            value: '',
+            type: props.type
         };
-        this._onWindowClick = this._onWindowClick.bind(this);
-        
+        this._onWindowClick = this._onWindowClick.bind(this);// 非常重要
     }
 
     componentDidMount() {
@@ -35,27 +29,46 @@ class RayrDropdown extends React.Component {
 
     _onWindowClick(event) {
         const dropdownEle = findDOMNode(this);
-        let isAc = this.isActive();
-        // 当点击了组件以外的区域，关闭本组件显示出来的选项框
+        let isActive = this.isActive();
         if(event.target !== dropdownEle && !dropdownEle.contains(event.target) && this.isActive()){
             this.hide();
         }
     }
 
+    handleHeaderClick() {
+        console.log('handle header click');
+
+        let posStyle = this.setPosition();
+        this.setState({
+            bodyPos: posStyle,
+            isOpen: !this.state.isOpen
+        });
+    }
+
+    handleBodyClick(e) {
+    }
+
     isActive() {
-        return this.state.showContent;
+        return this.state.isOpen;
     }
 
     hide() {
         this.setState({
-            showContent: false
+            isOpen: false
+        });
+    }
+
+    changeValue(data) {
+        this.setState({
+            value: data,
+            isOpen: false
         });
     }
 
     setPosition() {
         // 设置点击后显示的位置
-        let titleDom = this.refs.dropTitle;
-        let contentDom = this.refs.dropContent;
+        let titleDom = findDOMNode(this.refs.dropTitle);
+        let contentDom = findDOMNode(this.refs.dropContent);
         let titleRect = titleDom.getBoundingClientRect();
         let contentRect = contentDom.getBoundingClientRect();
         let horOffset = titleRect.width;// 水平偏移量
@@ -63,7 +76,6 @@ class RayrDropdown extends React.Component {
         let contentWid = contentRect.width;
         let contentHei = contentRect.height;
         let posStyle = {};
-
         switch(this.state.position){
             case 'top':
                 posStyle = {
@@ -109,41 +121,28 @@ class RayrDropdown extends React.Component {
         return posStyle;
     }
 
-    titleClick(e) {
-        this.setPosition();
-
-        let style = this.setPosition();
-        this.setState({
-            contentPos: style,
-            showContent: !this.state.showContent
-        });
-    }
-
-    contentClick(e) {
-        let node = findDOMNode(this);
-        // 利用 findDomNode 来检测点击的是否为本组件
-        if(this.props.contentClick){
-            // 回调函数
-            this.props.contentClick(this);
-        }
-    }
-
     render() {
-        let titleCls = this.state.showContent ? 'show' : 'hide';
+        const body = this.props.body;
+        const header = this.props.header;
+
         return (
-            <div className="rayr-dropd">
-                <div ref={"dropTitle"} className="rayr-d-title" onClick={this.titleClick.bind(this)}>
-                    {this.state.titleComponent}
-                </div>
-                <div ref={"dropContent"} className={`rayr-d-content ${titleCls}`} onClick={this.contentClick.bind(this)} style={this.state.contentPos}>
-                    {this.state.contentComponent}
-                </div>
-                {
-                    this.props.children
-                }
+            <div className="dropdown-wrapper">
+                {React.cloneElement(header, {
+                    onClick: this.handleHeaderClick.bind(this),
+                    ref: 'dropTitle',
+                    value: this.state.value,
+                    type: this.props.type
+                })}
+                {React.cloneElement(body, {
+                    onClick: this.handleBodyClick.bind(this),
+                    isopen: this.state.isOpen,
+                    ref: 'dropContent',
+                    style: this.state.bodyPos,
+                    changeValue: this.changeValue.bind(this)
+                })}
             </div>
         );
     }
 }
 
-export default RayrDropdown;
+export default Dropdown;

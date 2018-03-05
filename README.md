@@ -1,6 +1,6 @@
 # react-rayr-dropdown
 
-## dropdown component
+## base-dropdown component
 
 ### Description
 
@@ -33,3 +33,7 @@ npm install --save react-rayr-dropdown
 | contentCom | react组件/String | dropdown弹出内容 | 空字符串 |
 | pos | String | 弹出框展现位置,取值：'top','bottom','left','right','auto' | 'auto' |
 | contentClick | Function | 点击弹出内容的回调函数 | null |
+
+## select
+
+## input
