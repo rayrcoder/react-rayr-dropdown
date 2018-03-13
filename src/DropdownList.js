@@ -20,6 +20,11 @@ class DropdownList extends React.Component {
                             <li key={`dp-list-${index}`}
                                 value={item.value}
                                 label={item.label}
+                                onClick = {(e)=>{
+                                    console.log('点击选项');
+                                    console.log(e.target);
+                                    
+                                }}
                             >
                                 {item.label}
                             </li>

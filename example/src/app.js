@@ -173,6 +173,7 @@ function App() {
                                 <Dropdown.List
                                     list={list}
                                     onChange={(data)=>{
+                                        console.log('点击选项');
                                         console.log(data);
                                     }}
                                 />
