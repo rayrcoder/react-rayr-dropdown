@@ -1,0 +1,13 @@
+.dropdown .dp-trigger {
+  cursor: pointer;
+}
+
+.dropdown .dp-content {
+  cursor: pointer;
+  background-color: #eee;
+  visibility: hidden;
+}
+
+.dropdown .dp-content.active {
+  visibility: visible;
+}

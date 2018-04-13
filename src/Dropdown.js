@@ -1,68 +1,18 @@
+/*
+* Dropdown组件
+* */
+
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import PropTypes from 'react-dom';
-import classnames from 'classnames';
+import './Dropdown.scss';
 
 class Dropdown extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            isOpen: false,
-            position: props.pos || 'auto',
-            bodyPos: null,
-            offset: 10,
             winWidth: window.innerWidth,
-            winHeight: window.innerHeight,
-            value: '',
-            type: props.type
+            winHeight: window.innerHeight
         };
-        this._onWindowClick = this._onWindowClick.bind(this);// 非常重要
-    }
-
-    componentDidMount() {
-        window.addEventListener('click', this._onWindowClick);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('click', this._onWindowClick);
-    }
-
-    _onWindowClick(event) {
-        const dropdownEle = findDOMNode(this);
-        let isActive = this.isActive();
-        if(event.target !== dropdownEle && !dropdownEle.contains(event.target) && this.isActive()){
-            this.hide();
-        }
-    }
-
-    handleHeaderClick() {
-        console.log('handle header click');
-
-        let posStyle = this.setPosition();
-        this.setState({
-            bodyPos: posStyle,
-            isOpen: !this.state.isOpen
-        });
-    }
-
-    handleBodyClick(e) {
-    }
-
-    isActive() {
-        return this.state.isOpen;
-    }
-
-    hide() {
-        this.setState({
-            isOpen: false
-        });
-    }
-
-    changeValue(data) {
-        this.setState({
-            value: data,
-            isOpen: false
-        });
     }
 
     setPosition() {
@@ -122,24 +72,13 @@ class Dropdown extends React.Component {
     }
 
     render() {
-        const body = this.props.body;
-        const header = this.props.header;
-
         return (
-            <div className="dropdown-wrapper">
-                {React.cloneElement(header, {
-                    onClick: this.handleHeaderClick.bind(this),
-                    ref: 'dropTitle',
-                    value: this.state.value,
-                    type: this.props.type
-                })}
-                {React.cloneElement(body, {
-                    onClick: this.handleBodyClick.bind(this),
-                    isopen: this.state.isOpen,
-                    ref: 'dropContent',
-                    style: this.state.bodyPos,
-                    changeValue: this.changeValue.bind(this)
-                })}
+            <div className="dropdown">
+                {
+                    React.Children.map(this.props.children, (child) => {
+                        return child;
+                    })
+                }
             </div>
         );
     }
