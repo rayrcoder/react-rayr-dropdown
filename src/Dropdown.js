@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { findDOMNode } from 'react-dom';
-import './Dropdown.scss';
+// import './Dropdown.scss';
 
 class Dropdown extends React.Component {
     constructor(props) {
