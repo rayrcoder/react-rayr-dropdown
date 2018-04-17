@@ -1,90 +1,54 @@
-import 'react-rayr-dropdown/src/Dropdown.scss';
 
+import './index.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Dropdown, DropHeader, DropContent} from 'react-rayr-dropdown';
-
-class Title extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div className="dropdown-title">
-                <h4>Doprdown-Header</h4>
-            </div>
-        );
-    }
-}
-
-class Content extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    render() {
-        return (
-            <div className="dropdown-content">
-                <h5>Dropdown详细信息</h5>
-                <div className="details">
-                    <div className="de-info">
-                        <span>详细信息_1：</span>
-                        <span>详细信息内容xxxxxxx</span>
-                    </div>
-                    <div className="de-info">
-                        <span>详细信息_2：</span>
-                        <span>详细信息内容xxxxxxx</span>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
-
-function itemClick() {
-
-}
+import {Dropdown} from 'react-rayr-dropdown';
 
 function App() {
+    // 测试数据
     let list = [
         {
             value: 0,
-            label: '苹果'
+            label: '拼车'
         },{
             value: 1,
-            label: '香蕉'
+            label: '快车'
         },{
             value: 2,
-            label: '凤梨'
-        }];
+            label: '优享'
+        },
+        {
+            value: 3,
+            label: '专车'
+        },
+        {
+            value: 4,
+            label: ' 小巴'
+        },
+        {
+            value: 5,
+            label: '共享汽车'
+        }
+    ];
 
 
     return (
         <div className="dropd-demo">
-            <h1>Dropdown页面组件demo页面</h1>
+            <h1>Dropdown组件页面</h1>
             <div className="dropd-demo-box">
-                <div>
-                    <Dropdown>
-                        <DropHeader>
-                            <h3>Header</h3>
-                        </DropHeader>
-                        <DropContent>
-                            <ul>
-                                <li>content1</li>
-                                <li>content2</li>
-                                <li>content3</li>
-                            </ul>
-                        </DropContent>
-                    </Dropdown>
-                </div>
+                {/*<h3>Demo-1</h3>*/}
+                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+            </div>
 
-                <div>
+            <div className="dropd-demo-box">
+                {/*<h3>Demo-1</h3>*/}
+                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+            </div>
 
-                </div>
+            <div className="dropd-demo-box" style={{position: 'relative', top: '1000px'}}>
+                {/*<h3>Demo-1</h3>*/}
+                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
             </div>
         </div>
     )

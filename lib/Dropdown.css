@@ -1,13 +1,66 @@
-.dropdown .dp-trigger {
-  cursor: pointer;
+.dropdown {
+  position: relative;
+  width: 100%;
 }
 
-.dropdown .dp-content {
+.dropdown .drop-header input {
+  box-sizing: border-box;
+  border-radius: 4px;
   cursor: pointer;
-  background-color: #eee;
+  outline: none;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  height: 40px;
+  line-height: 40px;
+  padding: 5px 10px;
+  transition: border .3s;
+}
+
+.dropdown .drop-header input:hover {
+  border: 1px solid #5797FB;
+}
+
+.dropdown .drop-main {
+  visibility: hidden;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: border .3s;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.dropdown .drop-main.active {
+  visibility: visible;
+}
+
+.dropdown .drop-main.hide {
   visibility: hidden;
 }
 
-.dropdown .dp-content.active {
-  visibility: visible;
+.dropdown .drop-main:hover {
+  border: 1px solid #5797FB;
+}
+
+.dropdown .drop-main .drop-list {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown .drop-main .drop-list li {
+  list-style: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 14px;
+  transition: color .3s;
+}
+
+.dropdown .drop-main .drop-list li:hover {
+  color: #5797FB;
+}
+
+.dropdown .drop-main .drop-list li.selected {
+  color: #5797FB;
 }
