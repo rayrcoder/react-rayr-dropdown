@@ -4,7 +4,15 @@
 
 ### Description
 
-基本的dropdown组件
+Dropdown组件
+
+当前考虑实现三个场景下的使用
+
+1. 最简单的点击弹出场景
+
+2. 点击选择框（单选和多选）
+
+3. 输入提示框
 
 ### Install
 
@@ -12,28 +20,46 @@
 npm install --save react-rayr-dropdown
 ```
 
-### Usage
+### 各个场景下的使用
 
-```html
-<RayrDropdown
-    titleCom={<Title />}
-    contentCom={<Content />}
-    pos={"top"}
-    contentClick={(e)=>{
-        console.log(e);
-    }}
-/>
+#### Selector
+
+##### Usage
+
+- Test data
+
+```javascript
+    let list = [
+        {
+            value: 0,
+            label: '拼车'
+        },{
+            value: 1,
+            label: '快车'
+        },{
+            value: 2,
+            label: '优享'
+        }
+    ];
 ```
 
-### Params
+- Use
+
+```html
+<RayrDropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+```
+
+##### Params
 
 | 参数 | 类型 | 说明 | 默认值 |
 | ----| ----| ----| ------|
-| titleCom | react组件/String | dropdown头部内容 | 空字符串 |
-| contentCom | react组件/String | dropdown弹出内容 | 空字符串 |
-| pos | String | 弹出框展现位置,取值：'top','bottom','left','right','auto' | 'auto' |
-| contentClick | Function | 点击弹出内容的回调函数 | null |
+| options | 对象数组 | 选项的对象数组 | 空数组 |
+| placeholder | string | dropdown默认显示的站位字符串 | 空字符串 |
 
-## select
+##### Callback
 
-## input
+onChange方法，回调函数，当选项被选中时触发回调
+
+#### Simple
+
+#### Input

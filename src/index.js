@@ -1,3 +1,3 @@
-import Dropdown from './Dropdown';
+import RayrDropdown from './RayrDropdown';
 
-export {Dropdown};
+export {RayrDropdown};

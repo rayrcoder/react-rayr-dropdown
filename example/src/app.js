@@ -3,7 +3,7 @@ import './index.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Dropdown} from 'react-rayr-dropdown';
+import {RayrDropdown} from 'react-rayr-dropdown';
 
 function App() {
     // 测试数据
@@ -38,17 +38,17 @@ function App() {
             <h1>Dropdown组件页面</h1>
             <div className="dropd-demo-box">
                 {/*<h3>Demo-1</h3>*/}
-                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+                <RayrDropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
             </div>
 
             <div className="dropd-demo-box">
                 {/*<h3>Demo-1</h3>*/}
-                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+                <RayrDropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
             </div>
 
             <div className="dropd-demo-box" style={{position: 'relative', top: '1000px'}}>
                 {/*<h3>Demo-1</h3>*/}
-                <Dropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+                <RayrDropdown options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
             </div>
         </div>
     )
