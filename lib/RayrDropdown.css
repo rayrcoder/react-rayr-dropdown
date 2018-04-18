@@ -11,8 +11,8 @@
   width: 100%;
   border: 1px solid #ddd;
   font-size: 14px;
-  height: 40px;
-  line-height: 40px;
+  height: 34px;
+  line-height: 34px;
   padding: 5px 10px;
   transition: border .3s;
 }

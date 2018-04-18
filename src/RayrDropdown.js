@@ -31,9 +31,9 @@ class Dropdown extends React.Component {
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.resizeEvent.bind(this));
-        window.removeEventListener('scroll', this.resizeEvent.bind(this));
-        window.removeEventListener('click', this.onWindowClick.bind(this));
+        window.removeEventListener('resize', this.resizeEvent);
+        window.removeEventListener('scroll', this.resizeEvent);
+        window.removeEventListener('click', this.onWindowClick);
     }
 
     onWindowClick(e) {
