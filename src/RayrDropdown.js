@@ -3,7 +3,6 @@
 * */
 
 import React from 'react';
-import './RayrDropdown.scss';
 import {findDOMNode} from "react-dom";
 
 class Dropdown extends React.Component {
