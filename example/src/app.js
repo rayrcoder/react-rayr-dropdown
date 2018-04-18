@@ -10,7 +10,7 @@ function App() {
     // 测试数据
     let list = [
         {
-            value: 0,
+            value: null,
             label: '拼车'
         },{
             value: 1,

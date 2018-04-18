@@ -32,7 +32,7 @@
         background-color: #fff;
         z-index: 999;
         max-height: 100px;
-        overflow-y: scroll;
+        overflow-y: auto;
         // 自定义滚动条样式
         &::-webkit-scrollbar{
             width: 4px;

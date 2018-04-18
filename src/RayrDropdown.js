@@ -76,12 +76,13 @@ class Dropdown extends React.Component {
 
     itemClick(e) {
         let value = e.target.value;
+        let index = e.target.getAttribute('index');// 利用index标示当前选中的选项
         let label = e.target.innerHTML;
-        this.props.onChange({value: value, label: label});// 调用回调
+        this.props.onChange(this.props.options[index]);// 调用回调
         this.setState({
             value: label,
             isActive: !this.state.isActive,
-            selectIndex: value
+            selectIndex: index
         });
     }
 
@@ -111,10 +112,10 @@ class Dropdown extends React.Component {
                 <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
                     <ul className="drop-list">
                         {
-                            this.props.options.map((item) => {
-                                let itemCls = item.value == selectIndex ? 'selected' : '';
+                            this.props.options.map((item, index) => {
+                                let itemCls = index == selectIndex ? 'selected' : '';
                                 return (
-                                    <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} value={item.value}>{item.label}</li>
+                                    <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
                                 );
                             })
                         }
