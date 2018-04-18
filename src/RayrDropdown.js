@@ -18,6 +18,8 @@ class Dropdown extends React.Component {
             selectIndex: -1,
             posY: 0
         };
+        this.resizeEvent = this.resizeEvent.bind(this);
+        this.onWindowClick = this.onWindowClick.bind(this);
     }
 
     componentWillMount() {
@@ -25,9 +27,9 @@ class Dropdown extends React.Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.resizeEvent.bind(this));
-        window.addEventListener('scroll', this.resizeEvent.bind(this));
-        window.addEventListener('click', this.onWindowClick.bind(this));
+        window.addEventListener('resize', this.resizeEvent);
+        window.addEventListener('scroll', this.resizeEvent);
+        window.addEventListener('click', this.onWindowClick);
     }
 
     componentWillUnmount() {
