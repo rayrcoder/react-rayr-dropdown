@@ -20,6 +20,10 @@ class Dropdown extends React.Component {
         };
     }
 
+    componentWillMount() {
+        // 请求数据
+    }
+
     componentDidMount() {
         window.addEventListener('resize', this.resizeEvent.bind(this));
         window.addEventListener('scroll', this.resizeEvent.bind(this));
@@ -108,7 +112,7 @@ class Dropdown extends React.Component {
                     <ul className="drop-list">
                         {
                             this.props.options.map((item) => {
-                                let itemCls = item.value === selectIndex ? 'selected' : '';
+                                let itemCls = item.value == selectIndex ? 'selected' : '';
                                 return (
                                     <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} value={item.value}>{item.label}</li>
                                 );
