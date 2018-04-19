@@ -67,12 +67,12 @@ class Dropdown extends React.Component {
         let headerHeight = headerRect.height;
         let mainHeight = mainRect.height;
         let posY = 0;
+        let offset = 4;
         if((winHeight - bottom) > (mainHeight + 10)){// 预留10px的位置
-            posY = headerHeight + 10;
+            posY = headerHeight + offset;
         }else{
-            posY = -(mainHeight + 10);
+            posY = -(mainHeight + offset);
         }
-
         return posY;
     }
 
@@ -148,7 +148,6 @@ class Dropdown extends React.Component {
             </div>]);
         }else{
             // 输入框
-            posY = posY - 8;
             let mainTransform = {
                 transform: `translate(0px, ${posY}px)`
             };

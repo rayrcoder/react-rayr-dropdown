@@ -81,8 +81,8 @@ class App extends React.Component {
                 </div>
 
                 <div className="dropd-demo-box" style={{position: 'relative', top: '1000px'}}>
-                    <h4>单选框</h4>
-                    <RayrDropdown type="simple" options={this.state.selectOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
+                    <h4>输入框</h4>
+                    <RayrDropdown type="input" options={this.state.inputOpts} placeholder={`点击此处进行输入`} onTypeChange={this.inputChange.bind(this)} onChange={(item)=>{console.log(item)}} />
                 </div>
             </div>
         )
