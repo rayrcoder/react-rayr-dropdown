@@ -90,39 +90,96 @@ class Dropdown extends React.Component {
 
     inputClick(e) {
         let posY = this.getTranslateY();
-
         this.setState({
             isActive: !this.state.isActive,
             posY: posY
         });
     }
 
-    render() {
+    // 处理input输入时候的监控
+    handleChange(e) {
+        let value = e.target.value;
+        let posY = this.getTranslateY();
+        this.props.onTypeChange(value);
+
+        if(value === ''){
+            // 输入为空的时候
+            this.setState({
+                value: value,
+                isActive: false
+            });
+        }else{
+            this.setState({
+                value: value,
+                isActive: true,
+                posY: posY
+            });
+        }
+        
+    }
+
+    initMain() {
+        //  根据type的值来进行渲染
         let mainCls = this.state.isActive ? 'active' : 'hidden';
         let selectIndex = this.state.selectIndex;
         let {posY} = this.state;
+        
 
-        let mainTransform = {
-            transform: `translate(0px, ${posY}px)`
-        };
+        if(this.props.type === 'radio'){
+            let mainTransform = {
+                transform: `translate(0px, ${posY}px)`
+            };
+            // 选择框
+            return ([
+                <div ref={"dropHeader"} className="drop-header">
+                    <input onClick={this.inputClick.bind(this)} type="text" value={this.state.value} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
+                </div>,
+                <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
+                <ul className="drop-list">
+                    {
+                        this.props.options.map((item, index) => {
+                            let itemCls = index == selectIndex ? 'selected' : '';
+                            return (
+                                <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
+                            );
+                        })
+                    }
+                </ul>
+            </div>]);
+        }else{
+            // 输入框
+            posY = posY - 8;
+            let mainTransform = {
+                transform: `translate(0px, ${posY}px)`
+            };
+            return ([
+                <div ref={"dropHeader"} className="drop-header">
+                    <input  type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
+                </div>,
+                <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
+                {
+                    this.props.options == null || this.props.options.length <= 0 ? <div className="drop-empty-result">无搜索结果</div> : 
+                    <ul className="drop-list">
+                    {
+                        this.props.options.map((item, index) => {
+                            let itemCls = '';
+                            return (
+                                <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
+                            );
+                        })
+                    }
+                    </ul>
+                }
+            </div>]);
+        }
+    }
 
+    render() {
         return (
             <div className="dropdown">
-                <div ref={"dropHeader"} className="drop-header">
-                    <input onClick={this.inputClick.bind(this)} type="text" value={this.state.value} placeholder={this.props.placeholder} readOnly="true"/>
-                </div>
-                <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
-                    <ul className="drop-list">
-                        {
-                            this.props.options.map((item, index) => {
-                                let itemCls = index == selectIndex ? 'selected' : '';
-                                return (
-                                    <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
-                                );
-                            })
-                        }
-                    </ul>
-                </div>
+                {
+                    this.initMain()
+                }
             </div>
         );
     }

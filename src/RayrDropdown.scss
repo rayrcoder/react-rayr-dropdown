@@ -2,6 +2,8 @@
     position: relative;
     width: 100%;
     .drop-header{
+        position: relative;
+        z-index: 1000;
         input{
             box-sizing: border-box;
             border-radius: 4px;
@@ -58,6 +60,11 @@
 
         &:hover{
             border: 1px solid #5797FB;
+        }
+
+        .drop-empty-result{
+            font-size: 14px;
+            padding: 5px 10px;
         }
 
         .drop-list{

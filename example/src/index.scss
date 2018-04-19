@@ -1,6 +1,18 @@
 .dropd-demo{
+    h1{
+        text-align: center;
+    }
+
     .dropd-demo-box{
+        h4{
+            text-align: center;
+        }
+
         width: 200px;
         height: 300px;
+        display: inline-block;
+        margin: 10px;
+        border: 1px dashed #999;
+        padding: 15px;
     }
 }
