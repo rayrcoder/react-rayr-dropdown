@@ -4,6 +4,7 @@
 
 import React from 'react';
 import {findDOMNode} from "react-dom";
+import RayrDropdownHeader from './RayrDropdown.Header';
 
 class Dropdown extends React.Component {
     constructor(props) {
@@ -16,6 +17,7 @@ class Dropdown extends React.Component {
             placeholder: '',
             isActive: false,
             selectIndex: -1,
+            selectedList: [],
             posY: 0
         };
         this.resizeEvent = this.resizeEvent.bind(this);
@@ -57,12 +59,13 @@ class Dropdown extends React.Component {
         });
     }
 
-    getTranslateY() {
+    getTranslateY(header, body) {
         // 计算 主体内容的显示位置，位移
-        let headerDom = this.refs.dropHeader;
+        let headerDom = this.refs.dropHeader || header;
+        let bodyDom = this.refs.dropMain || body;
         let winHeight = window.innerHeight;
         let headerRect = headerDom.getBoundingClientRect();
-        let mainRect = this.refs.dropMain.getBoundingClientRect();
+        let mainRect = bodyDom.getBoundingClientRect();
         let bottom = headerRect.bottom;
         let headerHeight = headerRect.height;
         let mainHeight = mainRect.height;
@@ -89,11 +92,48 @@ class Dropdown extends React.Component {
     }
 
     inputClick(e) {
-        let posY = this.getTranslateY();
+        let header = e.currentTarget;
+        let body = e.currentTarget.nextElementSibling;
+        let posY = this.getTranslateY(header, body);
+        console.log(e.target);
+        let target = e.target;
+        if(target.className == 'check-close'){
+            // 点击了复选框的关闭按钮
+            this.setState({
+                isActive: false,
+                selectedList: [],
+                posY: posY
+            });
+        }else{
+            this.setState({
+                isActive: !this.state.isActive,
+                posY: posY
+            });
+        }
+    }
+
+    chkItemClick(e) {
+        let index = e.target.getAttribute('index');// 利用index标示当前选中的选项
+        let label = e.target.innerHTML;
+        this.props.onChange(this.state.selectedList);// 调用回调
+        let selectedList = this.state.selectedList;
+
+        // 遍历selectedList 到options里面去对比，看是否被选中了
+        if(this.state.selectedList.indexOf(index) === -1){
+            // 没有就往里面添加
+            selectedList.push(index);
+        }else{
+            // 有就从里面删除
+            selectedList.splice(selectedList.indexOf(index), 1);
+        }
+
         this.setState({
-            isActive: !this.state.isActive,
-            posY: posY
+            selectedList: selectedList
         });
+    }
+
+    chkClose(e) {
+
     }
 
     // 处理input输入时候的监控
@@ -115,7 +155,7 @@ class Dropdown extends React.Component {
                 posY: posY
             });
         }
-        
+
     }
 
     initMain() {
@@ -123,7 +163,7 @@ class Dropdown extends React.Component {
         let mainCls = this.state.isActive ? 'active' : 'hidden';
         let selectIndex = this.state.selectIndex;
         let {posY} = this.state;
-        
+
 
         if(this.props.type === 'radio'){
             let mainTransform = {
@@ -131,45 +171,82 @@ class Dropdown extends React.Component {
             };
             // 选择框
             return ([
-                <div ref={"dropHeader"} className="drop-header">
+                <div key={"radio_first"} ref={"dropHeader"} className="drop-header">
                     <input onClick={this.inputClick.bind(this)} type="text" value={this.state.value} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
                 </div>,
-                <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
-                <ul className="drop-list">
-                    {
-                        this.props.options.map((item, index) => {
-                            let itemCls = index == selectIndex ? 'selected' : '';
-                            return (
-                                <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
-                            );
-                        })
-                    }
-                </ul>
-            </div>]);
-        }else{
+                <div key={"radio_two"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
+                    <ul className="drop-list">
+                        {
+                            this.props.options.map((item, index) => {
+                                let itemCls = index == selectIndex ? 'selected' : '';
+                                return (
+                                    <li key={`radio_${index}`} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
+                                );
+                            })
+                        }
+                    </ul>
+                </div>]);
+        }else if(this.props.type === 'input'){
             // 输入框
             let mainTransform = {
                 transform: `translate(0px, ${posY}px)`
             };
             return ([
-                <div ref={"dropHeader"} className="drop-header">
+                <div key={"input_first"} ref={"dropHeader"} className="drop-header">
                     <input  type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
                 </div>,
-                <div ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
-                {
-                    this.props.options == null || this.props.options.length <= 0 ? <div className="drop-empty-result">无搜索结果</div> : 
-                    <ul className="drop-list">
+                <div key={"input_second"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
                     {
-                        this.props.options.map((item, index) => {
-                            let itemCls = '';
-                            return (
-                                <li key={item.value} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
-                            );
-                        })
+                        this.props.options == null || this.props.options.length <= 0 ? <div className="drop-empty-result">无搜索结果</div> :
+                        <ul className="drop-list">
+                        {
+                            this.props.options.map((item, index) => {
+                                let itemCls = '';
+                                return (
+                                    <li key={`input_${index}`} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
+                                );
+                            })
+                        }
+                        </ul>
                     }
+                </div>]);
+        }else{
+            // 多选
+            let mainTransform = {
+                transform: `translate(0px, ${posY}px)`
+            };
+            return([
+                <div key={"checkbox_first"} ref={"dropHeader"} className="drop-header">
+                    {/*<input onClick={this.inputClick.bind(this)} type="text" value={this.state.value} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>*/}
+                    <div className="checkbox-value" onClick={this.inputClick.bind(this)}>
+                        {
+                            this.state.selectedList.map((item, index) => {
+                                return (
+                                    <span key={`checkitem_${index}`} className="selected-item">{this.props.options[parseInt(item)].label}</span>
+                                )
+                            })
+                        }
+                        {
+                            this.state.selectedList.length > 0 ? (<span className="check-close" onClick={this.chkClose.bind(this)}>&times;</span>) : null
+                        }
+                    </div>
+                </div>,
+                <div key={"checkbox_two"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
+                    <ul className="drop-list">
+                        {
+                            this.props.options.map((item, index) => {
+                                let itemCls = index == selectIndex ? 'selected' : '';
+                                console.log(this.state.selectedList);
+                                let cls = this.state.selectedList.indexOf(index.toString()) !== -1 ? 'selected' : '';
+
+                                return (
+                                    <li key={`radio_${index}`} className={`${cls}`} onClick={this.chkItemClick.bind(this)} index={index} value={item.value}>{item.label}</li>
+                                );
+                            })
+                        }
                     </ul>
-                }
-            </div>]);
+                </div>
+            ]);
         }
     }
 

@@ -4,7 +4,7 @@ import 'react-rayr-dropdown/src/RayrDropdown.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropdown} from 'react-rayr-dropdown';
+import {RayrDropdown, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
 
 class App extends React.Component {
     constructor() {
@@ -64,23 +64,18 @@ class App extends React.Component {
         return (
             <div className="dropd-demo">
                 <h1>Dropdown组件页面</h1>
-                
+
                 <div className="dropd-demo-box">
                     <h4>单选框</h4>
-                    <RayrDropdown type="radio" options={this.state.selectOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
-                </div>
-    
-                <div className="dropd-demo-box">
-                    <h4>复选框</h4>
-                    <RayrDropdown type="radio" options={this.state.selectOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
-                </div>
-    
-                <div className="dropd-demo-box">
-                    <h4>输入框</h4>
-                    <RayrDropdown type="input" options={this.state.inputOpts} placeholder={`点击此处进行输入`} onTypeChange={this.inputChange.bind(this)} onChange={(item)=>{console.log(item)}} />
+                    <RayrDropdown key={"1"} type="radio" options={this.state.selectOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
                 </div>
 
-                <div className="dropd-demo-box" style={{position: 'relative', top: '1000px'}}>
+                <div className="dropd-demo-box">
+                    <h4>复选框</h4>
+                    <RayrDropdown type="checkbox" options={this.state.selectOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{}} />
+                </div>
+
+                <div className="dropd-demo-box">
                     <h4>输入框</h4>
                     <RayrDropdown type="input" options={this.state.inputOpts} placeholder={`点击此处进行输入`} onTypeChange={this.inputChange.bind(this)} onChange={(item)=>{console.log(item)}} />
                 </div>
@@ -88,61 +83,6 @@ class App extends React.Component {
         )
     }
 }
-
-// function App() {
-//     // 测试数据
-//     let list = [
-//         {
-//             value: null,
-//             label: '拼车'
-//         },{
-//             value: 1,
-//             label: '快车'
-//         },{
-//             value: 2,
-//             label: '优享'
-//         },
-//         {
-//             value: 3,
-//             label: '专车'
-//         },
-//         {
-//             value: 4,
-//             label: ' 小巴'
-//         },
-//         {
-//             value: 5,
-//             label: '共享汽车'
-//         }
-//     ];
-
-
-//     return (
-//         <div className="dropd-demo">
-//             <h1>Dropdown组件页面</h1>
-            
-//             <div className="dropd-demo-box">
-//                 <h4>单选框</h4>
-//                 <RayrDropdown type="radio" options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
-//             </div>
-
-//             <div className="dropd-demo-box">
-//                 <h4>复选框</h4>
-//                 <RayrDropdown type="checkbox" options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
-//             </div>
-
-//             <div className="dropd-demo-box">
-//                 <h4>输入框</h4>
-//                 <RayrDropdown type="input" options={[]} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} />
-//             </div>
-
-//             <div className="dropd-demo-box" style={{position: 'relative', top: '1000px'}}>
-//                 <h4>单选框</h4>
-//                 <RayrDropdown type="simple" options={list} placeholder={`请点击此处进行选择`} onChange={(item)=>{console.log(item)}} />
-//             </div>
-//         </div>
-//     )
-// }
 
 const run = () => {
     ReactDOM.render(<App/>, document.getElementById('app'));

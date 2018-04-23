@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "classnames": "^2.2.5",
+    "create-react-ref": "^0.1.0",
     "events": "^2.0.0",
     "prop-types": "^15.6.0",
     "react-transition-group": "^2.2.1"
