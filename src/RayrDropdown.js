@@ -95,13 +95,13 @@ class Dropdown extends React.Component {
         let header = e.currentTarget;
         let body = e.currentTarget.nextElementSibling;
         let posY = this.getTranslateY(header, body);
-        console.log(e.target);
         let target = e.target;
-        if(target.className == 'check-close'){
-            // 点击了复选框的关闭按钮
+        console.log(target.className);
+        if(target.className == 'item-delete'){
+            // 点击了复选框删除按钮
             this.setState({
-                isActive: false,
-                selectedList: [],
+                isActive: true,
+                // selectedList: [],
                 posY: posY
             });
         }else{
@@ -163,6 +163,7 @@ class Dropdown extends React.Component {
         let mainCls = this.state.isActive ? 'active' : 'hidden';
         let selectIndex = this.state.selectIndex;
         let {posY} = this.state;
+        let iconTrans = {transform: 'rotate(180deg)'};
 
 
         if(this.props.type === 'radio'){
@@ -173,6 +174,9 @@ class Dropdown extends React.Component {
             return ([
                 <div key={"radio_first"} ref={"dropHeader"} className="drop-header">
                     <input onClick={this.inputClick.bind(this)} type="text" value={this.state.value} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
+                    {
+                        this.state.isActive ? <span className="dropdown-select-icon" style={iconTrans}></span> : <span className="dropdown-select-icon"></span>
+                    }
                 </div>,
                 <div key={"radio_two"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
                     <ul className="drop-list">
@@ -194,6 +198,7 @@ class Dropdown extends React.Component {
             return ([
                 <div key={"input_first"} ref={"dropHeader"} className="drop-header">
                     <input  type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
+                    <span className="dropdown-search-icon"></span>
                 </div>,
                 <div key={"input_second"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
                     {
@@ -222,21 +227,25 @@ class Dropdown extends React.Component {
                         {
                             this.state.selectedList.map((item, index) => {
                                 return (
-                                    <span key={`checkitem_${index}`} className="selected-item">{this.props.options[parseInt(item)].label}</span>
+                                    <span key={`checkitem_${index}`} className="selected-item">{this.props.options[parseInt(item)].label}
+                                        <span className="item-delete" index={item} onClick={this.chkItemClick.bind(this)}>&times;</span>
+                                    </span>
                                 )
                             })
                         }
+                        {/*{*/}
+                            {/*this.state.selectedList.length > 0 ? (<span className="check-close" onClick={this.chkClose.bind(this)}>&times;</span>) : null*/}
+                        {/*}*/}
                         {
-                            this.state.selectedList.length > 0 ? (<span className="check-close" onClick={this.chkClose.bind(this)}>&times;</span>) : null
+                            this.state.isActive ? <span className="dropdown-select-icon" style={iconTrans}></span> : <span className="dropdown-select-icon"></span>
                         }
                     </div>
                 </div>,
                 <div key={"checkbox_two"} ref={"dropMain"} className={`drop-main ${mainCls}`} style={mainTransform}>
-                    <ul className="drop-list">
+                    <ul className="drop-list drop-checkbox-list">
                         {
                             this.props.options.map((item, index) => {
                                 let itemCls = index == selectIndex ? 'selected' : '';
-                                console.log(this.state.selectedList);
                                 let cls = this.state.selectedList.indexOf(index.toString()) !== -1 ? 'selected' : '';
 
                                 return (
