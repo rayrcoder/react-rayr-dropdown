@@ -9,15 +9,14 @@ import RayrDropdownHeader from './RayrDropdown.Header';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
             winWidth: window.innerWidth,
             winHeight: window.innerHeight,
             options: [],
-            value: this.props.value ? this.props.value.value : '',
+            value: this.props.value ? this.props.value.label : '',
             placeholder: '',
             isActive: false,
-            selectIndex: this.props.value ? this.props.value.label : -1,
+            selectIndex: this.props.value ? this.props.value.value : -1,
             selectedList: [],
             posY: 0
         };
@@ -98,7 +97,6 @@ class Dropdown extends React.Component {
         let body = e.currentTarget.nextElementSibling;
         let posY = this.getTranslateY(header, body);
         let target = e.target;
-        console.log(target.className);
         if(target.className == 'item-delete'){
             // 点击了复选框删除按钮
             this.setState({

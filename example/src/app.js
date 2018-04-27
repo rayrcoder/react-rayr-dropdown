@@ -84,7 +84,7 @@ class App extends React.Component {
 
                 <div className="dropd-demo-box">
                     <h4>单选框</h4>
-                    <RayrDropdown key={"1"} value={{value: '优享', label: 2}} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                    <RayrDropdown key={"1"} value={{value: 2, label: '优享'}} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
                 </div>
 
                 <div className="dropd-demo-box">
