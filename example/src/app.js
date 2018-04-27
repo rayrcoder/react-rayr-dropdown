@@ -83,6 +83,11 @@ class App extends React.Component {
                 </div>
 
                 <div className="dropd-demo-box">
+                    <h4>单选框</h4>
+                    <RayrDropdown key={"1"} value={{value: '优享', label: 2}} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                </div>
+
+                <div className="dropd-demo-box">
                     <h4>复选框</h4>
                     <RayrDropdown type="checkbox" options={this.state.checkOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{}} />
                 </div>

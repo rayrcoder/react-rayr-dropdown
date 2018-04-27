@@ -9,14 +9,15 @@ import RayrDropdownHeader from './RayrDropdown.Header';
 class Dropdown extends React.Component {
     constructor(props) {
         super(props);
+        console.log(this.props);
         this.state = {
             winWidth: window.innerWidth,
             winHeight: window.innerHeight,
             options: [],
-            value: '',
+            value: this.props.value ? this.props.value.value : '',
             placeholder: '',
             isActive: false,
-            selectIndex: -1,
+            selectIndex: this.props.value ? this.props.value.label : -1,
             selectedList: [],
             posY: 0
         };
@@ -26,6 +27,7 @@ class Dropdown extends React.Component {
 
     componentWillMount() {
         // 请求数据
+        
     }
 
     componentDidMount() {
