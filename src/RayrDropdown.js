@@ -29,6 +29,20 @@ class Dropdown extends React.Component {
         
     }
 
+    componentWillReceiveProps(props) {
+        // console.log(props);
+        if(props.isReset){
+            this.reset();
+        }
+
+        if(props.value){
+            this.setState({
+                value: props.value.label,
+                selectIndex: props.value.value
+            });
+        }
+    }
+
     componentDidMount() {
         window.addEventListener('resize', this.resizeEvent);
         window.addEventListener('scroll', this.resizeEvent);
@@ -41,6 +55,13 @@ class Dropdown extends React.Component {
         window.removeEventListener('click', this.onWindowClick);
     }
 
+    initData() {
+        console.log(this.props);
+        let opts = this.props.options;
+
+        
+    }
+
     onWindowClick(e) {
         const dropdownEle = findDOMNode(this);
         let isAc = this.state.isActive;
@@ -51,6 +72,10 @@ class Dropdown extends React.Component {
                 isActive: false
             });
         }
+    }
+
+    reset() {
+
     }
 
     resizeEvent() {
