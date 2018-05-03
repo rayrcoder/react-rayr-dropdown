@@ -1,0 +1,12 @@
+.rayr-toggle {
+  position: relative;
+  display: inline-block;
+}
+
+.rayr-toggle-box {
+  position: absolute;
+  display: none;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+}
