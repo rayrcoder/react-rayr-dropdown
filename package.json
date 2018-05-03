@@ -1,6 +1,6 @@
 {
   "name": "react-rayr-dropdown",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "react-rayr-dropdown",
   "main": "lib/index.js",
   "scripts": {

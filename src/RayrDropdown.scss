@@ -112,8 +112,8 @@
         width: 100%;
         top: 0;
         left: 0;
-        background-color: #fff;
-        z-index: 999;
+        background-color: #F8F8F8;
+        z-index: 2;
         max-height: 100px;
         overflow-y: auto;
         // 自定义滚动条样式
@@ -202,7 +202,7 @@
 
 .drop-header{
     position: relative;
-    z-index: 1000;
+    z-index: 1;
     cursor: pointer;
     input{
         box-sizing: border-box;
@@ -214,8 +214,9 @@
         font-size: 14px;
         height: 34px;
         line-height: 34px;
-        padding: 7px 20px;
+        padding: 7px 12px;
         transition: border .3s;
+        background-color: #F8F8F8;
         &::-webkit-input-placeholder{
             color: #333333;
         }
@@ -303,20 +304,12 @@
 }
 
 .drop-main-selector{
-    // visibility: hidden;
     box-sizing: border-box;
     border: 1px solid #DBDBDB;
     border-radius: 2px;
     transition: border .3s;
-    // position: absolute;
     width: 100%;
-    // top: 0;
-    // left: 0;
-    background-color: #fff;
-    // z-index: 999;
-    // max-height: 100px;
-    // overflow-y: auto;
-    // 自定义滚动条样式
+    background-color: #F8F8F8;
     &::-webkit-scrollbar{
         width: 4px;
         height: 1px;
@@ -352,7 +345,7 @@
         li{
             list-style: none;
             cursor: pointer;
-            padding: 5px 20px;
+            padding: 5px 12px;
             font-size: 14px;
             transition: color .3s;
             color: #333333;
