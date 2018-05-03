@@ -1,6 +1,7 @@
 
 import './index.scss';
 import 'react-rayr-dropdown/src/RayrDropdown.scss';
+import 'react-rayr-dropdown/src/lib/RayrToggle.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
