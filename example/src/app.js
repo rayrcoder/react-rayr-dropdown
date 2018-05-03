@@ -4,7 +4,7 @@ import 'react-rayr-dropdown/src/RayrDropdown.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropdown, RayrSelector, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
+import {RayrDropdown, RayrSelector, RayrCheckbox, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
 
 class App extends React.Component {
     constructor() {
@@ -109,6 +109,12 @@ class App extends React.Component {
                 <div className="dropd-demo-box">
                     <h4>Selector</h4>
                     <RayrSelector key={"1"} options={this.state.selectOpts} selected={this.state.selectedItme} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                    <button onClick={this.refresh.bind(this)}>刷新</button>
+                </div>
+
+                <div className="dropd-demo-box">
+                    <h4>Checkbox</h4>
+                    <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
                     <button onClick={this.refresh.bind(this)}>刷新</button>
                 </div>
             </div>
