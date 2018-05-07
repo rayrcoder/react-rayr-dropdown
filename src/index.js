@@ -3,5 +3,6 @@ import RayrDropdownHeader from './RayrDropdown.Header';
 import RayrDropdownBody from './RayrDropdown.Body';
 import RayrSelector from './RayrSelector';
 import RayrCheckbox from './RayrCheckbox';
+import RayrTypebox from './RayrTypebox';
 
-export {RayrDropdown, RayrDropdownHeader, RayrDropdownBody, RayrSelector, RayrCheckbox};
+export {RayrDropdown, RayrDropdownHeader, RayrDropdownBody, RayrSelector, RayrCheckbox, RayrTypebox};

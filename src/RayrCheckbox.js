@@ -99,7 +99,7 @@ class RayrCheckbox extends React.Component {
                         <ul className="drop-list drop-checkbox-list">
                             {
                                 [...this.state.mapOptions].map((item, index) => {
-                                    console.log(item);
+                                    // console.log(item);
                                     let itemCls = this.state.selectIndex.indexOf(index) !== -1 ? 'selected' : '';
                                     let cls = this.state.selectedList.indexOf(index.toString()) !== -1 ? 'selected' : '';
                                     return (

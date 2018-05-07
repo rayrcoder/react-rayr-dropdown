@@ -56,6 +56,8 @@ class RayrSelector extends React.Component {
     }
 
     inputClick(e) {
+        // e.nativeEvent.stopImmediatePropagation();
+        console.log('input click');
         let box = document.querySelector('.drop-main-selector');
         let visible = getStyleFn(box, 'display');
         this.setState({
