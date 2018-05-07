@@ -5,7 +5,7 @@ import 'react-rayr-dropdown/src/lib/RayrToggle.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropdown, RayrSelector, RayrCheckbox, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
+import {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
 
 class App extends React.Component {
     constructor() {
@@ -118,6 +118,14 @@ class App extends React.Component {
                     <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
                     <button onClick={this.refresh.bind(this)}>刷新</button>
                 </div>
+
+                <div className="dropd-demo-box">
+                    <h4>RayrTypebox</h4>
+                    <RayrTypebox options={this.state.checkOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
+                    <button onClick={this.refresh.bind(this)}>刷新</button>
+                </div>
+
+                 
             </div>
         )
     }

@@ -11,12 +11,30 @@ class RayrTypebox extends React.Component {
         this.state = {};
     }
 
+    getTranslateY(header, body) {
+        // 计算 主体内容的显示位置，位移
+        let headerDom = this.refs.dropHeader || header;
+        let bodyDom = this.refs.dropMain || body;
+        let winHeight = window.innerHeight;
+        let headerRect = headerDom.getBoundingClientRect();
+        let mainRect = bodyDom.getBoundingClientRect();
+        let bottom = headerRect.bottom;
+        let headerHeight = headerRect.height;
+        let mainHeight = mainRect.height;
+        let posY = 0;
+        let offset = 4;
+        if((winHeight - bottom) > (mainHeight + 10)){// 预留10px的位置
+            posY = headerHeight + offset;
+        }else{
+            posY = -(mainHeight + offset);
+        }
+        return posY;
+    }
+
     // 处理input输入时候的监控
     handleChange(e) {
         let value = e.target.value;
-        let posY = this.getTranslateY();
         this.props.onTypeChange(value);
-
         if(value === ''){
             // 输入为空的时候
             this.setState({
@@ -26,8 +44,7 @@ class RayrTypebox extends React.Component {
         }else{
             this.setState({
                 value: value,
-                isActive: true,
-                posY: posY
+                isActive: true
             });
         }
     }
