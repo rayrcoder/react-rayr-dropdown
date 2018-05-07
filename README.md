@@ -47,7 +47,7 @@ let selected = {value: 1, label: '快车'};
 <RayrSelector options={opts} placeholder={``} onChange={(item)=>{console.log(item)}} />
 
 // {*带预先选中选项的下拉单选框*} 
-<RayrSelector key={"1"} options={opts} selected={selected} placeholder={``} onChange={(item)=>{console.log(item)}} />
+<RayrSelector options={opts} selected={selected} placeholder={``} onChange={(item)=>{console.log(item)}} />
 
 ```
 
@@ -61,7 +61,7 @@ let selected = {value: 1, label: '快车'};
 
 #### Callback（回调）
 
-onChange方法，回调函数，当选项被选中时触发回调
+onChange方法，回调函数，当选项被选中时触发回调。回调函数的参数是被选中的选项对象（item object）
 
 
 ### RayrCheckbox
@@ -79,13 +79,19 @@ let selected = [{value: 1, label: '快车'}];
 
 #### Parmas（参数）
 
+| 参数 | 类型 | 说明 | 默认值 |
+| ----| ----| ----| ------|
+| options | Array | 选项的对象数组 | 空数组 |
+| placeholder | String | dropdown默认显示的站位字符串 | 空字符串 |
+| selected | Array | 已选中选项对象数组 | 空 |
+
 #### Callback（回调）
 
-
+onChange方法，回调函数，当选项被选中时触发回调。回调函数的参数是被选中的选项对象数组（object array）
 
 ### RayrTypebox
 
-> 下拉输入框
+> 下拉输入框，待完善...
 
 #### Use（使用）
 
@@ -94,5 +100,6 @@ let selected = [{value: 1, label: '快车'}];
 ```
 
 #### Parmas（参数）
+
 
 #### Callback（回调）
