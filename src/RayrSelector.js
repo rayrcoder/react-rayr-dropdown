@@ -77,7 +77,7 @@ class RayrSelector extends React.Component {
         let selected = this.state.mapOptions.get(this.state.selectIndex);
         let iconTrans = {transform: 'rotate(180deg)'};
         return (
-            <RayrToggle className="selector-box">
+            <RayrToggle className="selector-wrapper">
                 <RayrToggle.Top>
                     <div key={"radio_first"} ref={"dropHeader"} className="drop-header">
                         <input onClick={this.inputClick.bind(this)} type="text" value={selected ? selected.label : ''} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>

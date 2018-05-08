@@ -15,4 +15,21 @@
         border: 1px dashed #999;
         padding: 15px;
     }
+
+    .show-box{
+        .show-content{
+            .sm-box,.md-box,.lg-box{
+                margin: 20px 0;
+            }
+            .sm-box{
+                width: 50px;
+            }
+            .md-box{
+                width: 200px;
+            }
+            .lg-box{
+                width: 350px;
+            }
+        }
+    }
 }

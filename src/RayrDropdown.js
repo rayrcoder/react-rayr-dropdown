@@ -4,7 +4,6 @@
 
 import React from 'react';
 import {findDOMNode} from "react-dom";
-import RayrDropdownHeader from './RayrDropdown.Header';
 
 class Dropdown extends React.Component {
     constructor(props) {

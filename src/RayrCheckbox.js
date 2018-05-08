@@ -85,12 +85,9 @@ class RayrCheckbox extends React.Component {
                                     )
                                 })
                             }
-                            {/*{*/}
-                                {/*this.state.selectedList.length > 0 ? (<span className="check-close" onClick={this.chkClose.bind(this)}>&times;</span>) : null*/}
-                            {/*}*/}
-                            {
-                                this.state.isActive ? <span className="dropdown-select-icon" style={iconTrans}></span> : <span className="dropdown-select-icon"></span>
-                            }
+                            {/* {
+                                this.state.isActive ? '' : <span className="dropdown-select-icon"></span>
+                            } */}
                         </div>
                     </div>
                 </RayrToggle.Top>

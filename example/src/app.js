@@ -5,7 +5,7 @@ import 'react-rayr-dropdown/src/lib/RayrToggle.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox, RayrDropdownHeader, RayrDropdownBody} from 'react-rayr-dropdown';
+import {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox} from 'react-rayr-dropdown';
 
 class App extends React.Component {
     constructor() {
@@ -83,12 +83,41 @@ class App extends React.Component {
     render() {
         return (
             <div className="dropd-demo">
-                <h1>Dropdown组件页面</h1>
+                <h1>Dropdown</h1>
+                <div className="show-box">
+                    <h3>Selector选择器</h3>
+                    <div className="show-content">
+                        <div className="md-box">
+                            <RayrSelector key={"1"} options={this.state.selectOpts} selected={this.state.selectedItme} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                        </div>
 
-                <div className="dropd-demo-box">
+                        <div className="lg-box">
+                            <RayrSelector key={"1"} options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="show-box">
+                    <h3>基础多选</h3>
+                    <div className="show-content">
+                        <div className="md-box">
+                            <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="show-box">
+                    <h3>搜索框</h3>
+                    <div className="show-content">
+                        <div className="md-box">
+                            <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
+                        </div>
+                    </div>
+                </div>
+
+                {/* <div className="dropd-demo-box">
                     <h4>单选框</h4>
                     <RayrDropdown key={"1"} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
-                    
                 </div>
 
                 <div className="dropd-demo-box">
@@ -105,15 +134,8 @@ class App extends React.Component {
                 <div className="dropd-demo-box">
                     <h4>输入框</h4>
                     <RayrDropdown type="input" options={this.state.inputOpts} placeholder={`点击此处进行输入`} onTypeChange={this.inputChange.bind(this)} onChange={(item)=>{console.log(item)}} />
-                </div>
-
-                <div className="dropd-demo-box">
-                    <h4>Selector</h4>
-                    <RayrSelector key={"1"} options={this.state.selectOpts} selected={this.state.selectedItme} placeholder={``} onChange={(item)=>{console.log(item)}} />
-                    <button onClick={this.refresh.bind(this)}>刷新</button>
-                </div>
-
-                <div className="dropd-demo-box">
+                </div> */}
+                {/* <div className="dropd-demo-box">
                     <h4>Checkbox</h4>
                     <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
                     <button onClick={this.refresh.bind(this)}>刷新</button>
@@ -121,11 +143,9 @@ class App extends React.Component {
 
                 <div className="dropd-demo-box">
                     <h4>RayrTypebox</h4>
-                    <RayrTypebox options={this.state.checkOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
+                    <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
                     <button onClick={this.refresh.bind(this)}>刷新</button>
-                </div>
-
-                 
+                </div> */}
             </div>
         )
     }

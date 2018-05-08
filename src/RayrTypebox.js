@@ -11,6 +11,10 @@ class RayrTypebox extends React.Component {
         this.state = {};
     }
 
+    componentWillReceiveProps(newProps) {
+        console.log(newProps);
+    }
+
     getTranslateY(header, body) {
         // 计算 主体内容的显示位置，位移
         let headerDom = this.refs.dropHeader || header;
