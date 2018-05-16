@@ -19,32 +19,35 @@ class RayrSelector extends React.Component {
     }
 
     componentDidMount() {
-        this.processData();
+        this.processData(this.props);
     }
 
     componentWillReceiveProps(newProps) {
-        if(newProps.selected !== this.props.selected){
-            let selected = newProps.selected;
-            [...this.state.mapOptions].map((item) => {
-                if(selected.label === item[1].label && selected.value === item[1].value){
-                    this.setState({
-                        selectIndex: item[0]
-                    });
-                }
-            });
-        }
+        // 外部参数改变,就再重新更新数据，重新渲染
+        this.processData(newProps);
+        // if(newProps.selected !== this.props.selected){
+        //     let selected = newProps.selected;
+        //     [...this.state.mapOptions].map((item) => {
+        //         if(selected.label === item[1].label && selected.value === item[1].value){
+        //             this.setState({
+        //                 selectIndex: item[0]
+        //             });
+        //         }
+        //     });
+        // }
     }
 
-    processData() {
+    processData(props) {
         // 预处理数据
-        let originOpts = this.props.options;
+        let originOpts = props.options;
         let optionsMap = new Map();
-        let selected = this.state.selected;
+        let selected = props.selected || this.state.selected;
         let selectIndex = -1;
 
         originOpts.map((item, index) => {
             optionsMap.set(index, item);
-            if(selected && selected.label === item.label && selected.value === item.value){
+            if(selected && selected.label == item.label && selected.value == item.value){
+                // 暂时用非全等
                 selectIndex = index;
             }
         });
@@ -56,8 +59,6 @@ class RayrSelector extends React.Component {
     }
 
     inputClick(e) {
-        // e.nativeEvent.stopImmediatePropagation();
-        console.log('input click');
         let box = document.querySelector('.drop-main-selector');
         let visible = getStyleFn(box, 'display');
         this.setState({

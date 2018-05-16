@@ -6,6 +6,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox} from 'react-rayr-dropdown';
+import {RayrBtn} from 'react-rayr-btn';
 
 class App extends React.Component {
     constructor() {
@@ -76,7 +77,19 @@ class App extends React.Component {
 
     refresh(){
         this.setState({
-            selectedItme: {value: null, label: '拼车'}
+            selectedItme: {value: null, label: '刘备'},
+            selectOpts: [
+                {
+                    value: null,
+                    label: '刘备'
+                },{
+                    value: 1,
+                    label: '曹操'
+                },{
+                    value: 2,
+                    label: '孙权'
+                }
+            ]
         })
     }
 
@@ -93,6 +106,10 @@ class App extends React.Component {
 
                         <div className="lg-box">
                             <RayrSelector key={"1"} options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                        </div>
+
+                        <div className="lg-box">
+                            <RayrBtn type="primary" onClick={this.refresh.bind(this)}>更新数据</RayrBtn>
                         </div>
                     </div>
                 </div>

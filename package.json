@@ -1,6 +1,6 @@
 {
   "name": "react-rayr-dropdown",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "react-rayr-dropdown",
   "main": "lib/index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "create-react-ref": "^0.1.0",
     "events": "^2.0.0",
     "prop-types": "^15.6.0",
+    "react-rayr-component": "^0.0.13",
     "react-transition-group": "^2.2.1"
   },
   "devDependencies": {
