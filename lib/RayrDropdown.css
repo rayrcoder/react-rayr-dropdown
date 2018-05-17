@@ -1,3 +1,4 @@
+@import url(../node_modules/react-rayr-toggle/lib/RayrToggle.css);
 .checkbox-wrapper {
   width: 100%;
 }
@@ -159,6 +160,8 @@
   width: 100%;
   background-color: #F8F8F8;
   z-index: 2 !important;
+  max-height: 200px;
+  overflow: auto;
 }
 
 .selector-wrapper .drop-main-selector::-webkit-scrollbar {
@@ -216,6 +219,10 @@
 .selector-wrapper .drop-main-selector .drop-list li.selected {
   color: #5797FB;
   background-color: #F8F8F8;
+}
+
+.rayr-toggle-show .dropdown-select-icon {
+  transform: rotate(180deg);
 }
 
 .drop-header {

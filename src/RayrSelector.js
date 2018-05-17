@@ -1,6 +1,6 @@
-
 import React from 'react';
-import RayrToggle from './lib/RayrToggle';
+// import RayrToggle from './lib/RayrToggle';
+import {RayrToggle} from 'react-rayr-toggle';
 
 function getStyleFn(ele, attr) {
     return window.getComputedStyle(ele, null)[attr];
@@ -39,7 +39,7 @@ class RayrSelector extends React.Component {
 
     processData(props) {
         // 预处理数据
-        let originOpts = props.options;
+        let originOpts = props.options || [];
         let optionsMap = new Map();
         let selected = props.selected || this.state.selected;
         let selectIndex = -1;
@@ -76,15 +76,12 @@ class RayrSelector extends React.Component {
     render() {
         let mainTransform = {fontSize: 'normal'};
         let selected = this.state.mapOptions.get(this.state.selectIndex);
-        let iconTrans = {transform: 'rotate(180deg)'};
         return (
             <RayrToggle className="selector-wrapper">
                 <RayrToggle.Top>
                     <div key={"radio_first"} ref={"dropHeader"} className="drop-header">
                         <input onClick={this.inputClick.bind(this)} type="text" value={selected ? selected.label : ''} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
-                        {
-                            this.state.isActive ? <span className="dropdown-select-icon" style={iconTrans}></span> : <span className="dropdown-select-icon"></span>
-                        }
+                        <span className="dropdown-select-icon"></span>
                     </div>
                 </RayrToggle.Top>
                 <RayrToggle.Box className={`drop-main-selector`}>

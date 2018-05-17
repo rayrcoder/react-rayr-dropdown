@@ -1,3 +1,5 @@
+@import '../node_modules/react-rayr-toggle/lib/RayrToggle.css';
+
 // 多选下拉框
 .checkbox-wrapper{
     width: 100%;
@@ -146,6 +148,8 @@
         width: 100%;
         background-color: #F8F8F8;
         z-index: 2!important;
+        max-height: 200px;
+        overflow: auto;
         &::-webkit-scrollbar{
             width: 4px;
             height: 1px;
@@ -196,6 +200,11 @@
                 }
             }
         }
+    }
+}
+.rayr-toggle-show{
+    .dropdown-select-icon{
+        transform: rotate(180deg);
     }
 }
 
