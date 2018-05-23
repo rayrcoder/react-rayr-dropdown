@@ -48,6 +48,30 @@ class App extends React.Component {
                     label: '共享汽车'
                 }
             ],
+            checkOpts2: [
+                {
+                    value: null,
+                    label: '刘备'
+                },{
+                    value: 1,
+                    label: '曹操'
+                },{
+                    value: 2,
+                    label: '孙权'
+                },
+                {
+                    value: 3,
+                    label: '诸葛孔明'
+                },
+                {
+                    value: 4,
+                    label: '庞统'
+                },
+                {
+                    value: 5,
+                    label: '贾诩'
+                }
+            ],
             inputOpts: [],
             optMap: {
                 '广州': [{value: 0, label: '广州市'},{value: 1, label: '广州市海珠区'},{value: 2, label: '广州大学城'}],
@@ -151,7 +175,6 @@ class App extends React.Component {
 
                         <div className="lg-box">
                             <RayrBtn type="primary" onClick={this.refresh.bind(this)}>更新数据</RayrBtn>
-                            {/* <RayrBtn type="primary" onClick={this.reset.bind(this)}>重置组件</RayrBtn> */}
                         </div>
                     </div>
                 </div>
@@ -161,6 +184,12 @@ class App extends React.Component {
                     <div className="show-content">
                         <div className="md-box">
                             <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择（多选）`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
+                        </div>
+                        <div className="lg-box">
+                            <RayrCheckbox options={this.state.checkOpts2} selectedList={[]} placeholder={`请选择（多选）`} onChange={(item)=>{console.log(item)}} />
+                        </div>
+                        <div className="lg-box">
+                            <RayrBtn type="primary" onClick={this.refresh.bind(this)}>更新数据</RayrBtn>
                         </div>
                     </div>
                 </div>

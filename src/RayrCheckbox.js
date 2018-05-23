@@ -29,8 +29,6 @@ class RayrCheckbox extends React.Component {
         originOpts.map((item, index) => {
             optionsMap.set(index, item);
             selectedList.map((newItem) => {
-                console.log(newItem);
-                console.log(item);
                 if(item.label === newItem.label && item.value === newItem.value){
                     selectIndexList.push(index);
                 }
@@ -45,7 +43,6 @@ class RayrCheckbox extends React.Component {
     }
 
     chkItemClick(item) {
-        console.log(item);
         let selectList = this.state.selectIndex;
         if(this.state.selectIndex.indexOf(parseInt(item[0])) !== -1){
             // 删除

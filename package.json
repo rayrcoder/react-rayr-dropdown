@@ -19,6 +19,7 @@
     "create-react-ref": "^0.1.0",
     "events": "^2.0.0",
     "prop-types": "^15.6.0",
+    "react-rayr-btn": "^0.0.9",
     "react-rayr-component": "^0.0.13",
     "react-rayr-toggle": "^0.0.3",
     "react-transition-group": "^2.2.1"
