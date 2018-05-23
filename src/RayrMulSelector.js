@@ -72,11 +72,15 @@ class RayrMulSelector extends React.Component {
         this.setState({
             selectIndex: selectList
         },()=>{
-            this.props.onChange(this.state.selectIndex);
+            let selected = this.state.selectIndex.map((item, index)=>{
+                return this.state.mapOptions.get(item);
+            });
+            this.props.onChange(selected);
         });
     }
 
     render() {
+        console.log(this.state.mapOptions);
         let mainTransform = {fontSize: 'normal'};
         return (
             <RayrToggle className="checkbox-wrapper">
@@ -87,6 +91,7 @@ class RayrMulSelector extends React.Component {
                                 this.state.selectIndex.length <= 0 ? <div className="chk-placeholder">{this.state.placeholder}</div> :
                                 this.state.selectIndex.map((item, index) => {
                                     let selected = this.state.mapOptions.get(item);
+                                    console.log(selected);
                                     return (
                                         <span key={`checkitem_${index}`} className="selected-item">{selected ? selected.label: ''}
                                             <span className="item-delete" index={item}>&times;</span>

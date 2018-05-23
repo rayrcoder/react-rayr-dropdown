@@ -87,7 +87,18 @@ let selectedList = [{value: 1, label: '快车'}];
 
 #### Callback（回调）
 
-onChange方法，回调函数，当选项被选中时触发回调。回调函数的参数是被选中的选项对象数组（object array）
+onChange方法，回调函数，当选项被选中时触发回调。回调函数的参数是被选中的选项对象数组（object array）形式如下：
+
+```javascript
+[
+    {
+        value: 0, label: '选项1'
+    },
+    {
+        value: 1, label: '选项2'
+    }
+]
+```
 
 ### RayrTypebox
 
