@@ -62,6 +62,10 @@ class RayrCheckbox extends React.Component {
         console.log('check item click!');
     }
 
+    closeItem(item) {
+        console.log('click item close btn!');
+    }
+
 
 
     render() {
@@ -79,7 +83,7 @@ class RayrCheckbox extends React.Component {
                                     let selected = this.state.mapOptions.get(item);
                                     return (
                                         <span key={`checkitem_${index}`} className="selected-item">{selected ? selected.label: ''}
-                                            <span className="item-delete" onClick={this.chkItemClick.bind(this)}>&times;</span>
+                                            <span className="item-delete" onClick={this.closeItem.bind(this)}>&times;</span>
                                         </span>
                                     )
                                 })
