@@ -1,6 +1,5 @@
-
 import React from 'react';
-import RayrToggle from './lib/RayrToggle';
+import {RayrToggle} from 'react-rayr-toggle';
 
 class RayrCheckbox extends React.Component {
     constructor(props) {
@@ -9,7 +8,6 @@ class RayrCheckbox extends React.Component {
             selectedList: this.props.selectedList || [],
             selectIndex: [],
             mapOptions: new Map(),
-            isActive: false,
             placeholder: this.props.placeholder || '请选择'
         };
     }
@@ -18,32 +16,32 @@ class RayrCheckbox extends React.Component {
         this.processData();
     }
 
-    componentWillReceiveProps(newProps) {}
+    componentWillReceiveProps(newProps) {
+        
+    }
 
     processData() {
-        let originOpts = this.props.options;
+        let originOpts = this.props.options;// 原始选项数组
         let optionsMap = new Map();
-        let selectedList = this.state.selectedList;
+        let selectedList = this.state.selectedList;// 被选中的list
         let selectIndexList = [];
 
         originOpts.map((item, index) => {
             optionsMap.set(index, item);
             selectedList.map((newItem) => {
+                console.log(newItem);
+                console.log(item);
                 if(item.label === newItem.label && item.value === newItem.value){
                     selectIndexList.push(index);
                 }
             });
 
         });
-
         this.setState({
             mapOptions: optionsMap,
-            selectIndex: selectIndexList
+            selectIndex: selectIndexList,
+            selectedList: selectedList
         });
-    }
-
-    inputClick() {
-        console.log('checkbox input click');
     }
 
     chkItemClick(item) {
@@ -59,24 +57,19 @@ class RayrCheckbox extends React.Component {
         this.setState({
             selectIndex: selectList
         });
-        console.log('check item click!');
     }
 
     closeItem(item) {
         console.log('click item close btn!');
     }
 
-
-
     render() {
         let mainTransform = {fontSize: 'normal'};
-        let iconTrans = {transform: 'rotate(180deg)'};
-
         return (
             <RayrToggle className="checkbox-wrapper">
                 <RayrToggle.Top>
                     <div key={"checkbox_first"} ref={"dropHeader"} className="drop-header">
-                        <div className="checkbox-value" onClick={this.inputClick.bind(this)}>
+                        <div className="checkbox-value">
                             {
                                 this.state.selectIndex.length <= 0 ? <div className="chk-placeholder">{this.state.placeholder}</div> :
                                 this.state.selectIndex.map((item, index) => {
@@ -88,6 +81,7 @@ class RayrCheckbox extends React.Component {
                                     )
                                 })
                             }
+                            <span className="dropdown-select-icon"></span>
                         </div>
                     </div>
                 </RayrToggle.Top>
@@ -97,9 +91,8 @@ class RayrCheckbox extends React.Component {
                             {
                                 [...this.state.mapOptions].map((item, index) => {
                                     let itemCls = this.state.selectIndex.indexOf(index) !== -1 ? 'selected' : '';
-                                    let cls = this.state.selectedList.indexOf(index.toString()) !== -1 ? 'selected' : '';
                                     return (
-                                        <li key={`radio_${index}`} className={`${cls}`} onClick={this.chkItemClick.bind(this, item)} index={index} value={item[1].value}>{item[1].label}</li>
+                                        <li key={`radio_${index}`} className={`${itemCls}`} onClick={this.chkItemClick.bind(this, item)} index={index} value={item[1].value}>{item[1].label}</li>
                                     );
                                 })
                             }

@@ -101,6 +101,30 @@ class App extends React.Component {
                     value: 5,
                     label: '贾诩'
                 }
+            ],
+            checkOpts: [
+                {
+                    value: null,
+                    label: '刘备'
+                },{
+                    value: 1,
+                    label: '曹操'
+                },{
+                    value: 2,
+                    label: '孙权'
+                },
+                {
+                    value: 3,
+                    label: '诸葛孔明'
+                },
+                {
+                    value: 4,
+                    label: '庞统'
+                },
+                {
+                    value: 5,
+                    label: '贾诩'
+                }
             ]
         })
     }
@@ -136,7 +160,7 @@ class App extends React.Component {
                     <h3>MulSelector基础多选</h3>
                     <div className="show-content">
                         <div className="md-box">
-                            <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
+                            <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择（多选）`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
                         </div>
                     </div>
                 </div>

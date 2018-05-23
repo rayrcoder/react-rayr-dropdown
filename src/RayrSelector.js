@@ -46,14 +46,6 @@ class RayrSelector extends React.Component {
         });
     }
 
-    inputClick(e) {
-        let box = document.querySelector('.drop-main-selector');
-        let visible = getStyleFn(box, 'display');
-        this.setState({
-            isActive: !this.state.isActive
-        });
-    }
-
     itemClick(item, index) {
         this.props.onChange(item);
         this.setState({
@@ -68,7 +60,7 @@ class RayrSelector extends React.Component {
             <RayrToggle className="selector-wrapper">
                 <RayrToggle.Top>
                     <div key={"radio_first"} ref={"dropHeader"} className="drop-header">
-                        <input onClick={this.inputClick.bind(this)} type="text" value={selected ? selected.label : ''} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
+                        <input type="text" value={selected ? selected.label : ''} placeholder={this.props.placeholder || '请选择'} readOnly="true"/>
                         <span className="dropdown-select-icon"></span>
                     </div>
                 </RayrToggle.Top>

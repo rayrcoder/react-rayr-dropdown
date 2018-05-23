@@ -10,9 +10,10 @@
         outline: none;
         width: 100%;
         border: 1px solid #DBDBDB;
+        background-color: #F8F8F8;
         font-size: 14px;
         transition: border .3s;
-        padding: 6px 2px;
+        padding: 6px 12px;
         // 自定义滚动条样式
         &::-webkit-scrollbar{
             width: 4px;
@@ -56,8 +57,11 @@
         border-radius: 2px;
         transition: border .3s;
         width: 100%;
-        background-color: #F8F8F8;
+        background-color: #FFFFFF;
         z-index: 2!important;
+        &:hover{
+            border: 1px solid #5797FB;
+        }
         .drop-checkbox-list{
             padding: 0;
             margin: 0;
@@ -69,12 +73,12 @@
                 transition: color .3s;
                 color: #333333;
                 &:hover{
-                    background-color: rgba(237,237,237,1);
-                    color: #333333;
+                    background-color: #F8F8F8;
+                    color: #5797FB;
                 }
                 &.selected{
-                    background-color: rgba(87,151,251,0.3);
-                    color: #333333;
+                    background-color: #F8F8F8;
+                    color: #5797FB;
                 }
             }
         }
@@ -264,11 +268,11 @@
         background-image: url('./imgs/icon@1x.png');
     }
 
-    .check-close{
-        position: absolute;
-        right: 0;
-        top: 6px;
-        margin-right: 5px;
-    }
+    // .check-close{
+    //     position: absolute;
+    //     right: 0;
+    //     top: 6px;
+    //     margin-right: 5px;
+    // }
 }
 
