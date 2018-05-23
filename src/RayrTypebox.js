@@ -1,5 +1,5 @@
 import React from 'react';
-import RayrToggle from './lib/RayrToggle';
+import {RayrToggle} from 'react-rayr-toggle';
 
 function getStyleFn(ele, attr) {
     return window.getComputedStyle(ele, null)[attr];
@@ -11,6 +11,13 @@ class RayrTypebox extends React.Component {
         this.state = {
             value: ''
         };
+    }
+
+    componentDidMount() {
+        console.log(this.refs.typeInput);
+        this.refs.typeInput.addEventListener('click', ()=>{
+            this.inputClick();
+        });
     }
 
     componentWillReceiveProps(newProps) {
@@ -68,13 +75,17 @@ class RayrTypebox extends React.Component {
         });
     }
 
+    inputClick() {
+        console.log('input click');
+    }
+
     render() {
         let options = this.props.options || [];
 
         return (
             <RayrToggle className="type-box">
                 <RayrToggle.Top className="drop-header">
-                    <input  type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
+                    <input ref="typeInput" type="text" onClick={this.inputClick.bind(this)} value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
                     <span className="dropdown-search-icon"></span>
                 </RayrToggle.Top>
                 <RayrToggle.Box className="drop-main">

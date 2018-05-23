@@ -163,7 +163,7 @@ class App extends React.Component {
             <div className="dropd-demo">
                 <h1>Dropdown</h1>
                 <div className="show-box">
-                    <h3>Selector选择器</h3>
+                    <h3>Selector 单项选择器</h3>
                     <div className="show-content">
                         <div className="md-box">
                             <RayrSelector key={"1"} options={this.state.selectOpts} selected={this.state.selectedItme} placeholder={``} onChange={(item)=>{console.log(item)}} />
@@ -180,7 +180,7 @@ class App extends React.Component {
                 </div>
 
                 <div className="show-box">
-                    <h3>MulSelector基础多选</h3>
+                    <h3>MultipleSelector 多选选择器</h3>
                     <div className="show-content">
                         <div className="md-box">
                             <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择（多选）`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
@@ -195,14 +195,13 @@ class App extends React.Component {
                 </div>
 
                 <div className="show-box">
-                    <h3>TypeBox搜索框</h3>
+                    <h3>TypeBox 搜索框</h3>
                     <div className="show-content">
                         <div className="md-box">
                             <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
                         </div>
                     </div>
                 </div>
-
             </div>
         )
     }

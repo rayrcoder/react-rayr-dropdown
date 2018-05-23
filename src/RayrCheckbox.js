@@ -13,17 +13,35 @@ class RayrCheckbox extends React.Component {
     }
 
     componentDidMount() {
-        this.processData();
+        this.processData(this.props);
+        this.refs.checkBox.addEventListener('click', (e)=>{
+            let target = e.target;
+            if(target.className === 'item-delete'){
+                e.stopPropagation();
+                let index = target.getAttribute('index');
+                let selectList = this.state.selectIndex;
+                if(selectList.indexOf(parseInt(index)) !== -1){
+                    // 删除
+                    selectList.splice(selectList.indexOf(parseInt(index)), 1);
+                }
+                this.setState({
+                    selectIndex: selectList
+                });
+            }
+        });
+    }
+    
+    componentWillUnmount() {
     }
 
     componentWillReceiveProps(newProps) {
-        
+        this.processData(newProps);
     }
 
-    processData() {
-        let originOpts = this.props.options;// 原始选项数组
+    processData(props) {
+        let originOpts = props.options;// 原始选项数组
         let optionsMap = new Map();
-        let selectedList = this.state.selectedList;// 被选中的list
+        let selectedList = props.selectedList || [];// 被选中的list
         let selectIndexList = [];
 
         originOpts.map((item, index) => {
@@ -53,11 +71,9 @@ class RayrCheckbox extends React.Component {
         }
         this.setState({
             selectIndex: selectList
+        },()=>{
+            this.props.onChange(this.state.selectIndex);
         });
-    }
-
-    closeItem(item) {
-        console.log('click item close btn!');
     }
 
     render() {
@@ -66,14 +82,14 @@ class RayrCheckbox extends React.Component {
             <RayrToggle className="checkbox-wrapper">
                 <RayrToggle.Top>
                     <div key={"checkbox_first"} ref={"dropHeader"} className="drop-header">
-                        <div className="checkbox-value">
+                        <div className="checkbox-value" ref="checkBox">
                             {
                                 this.state.selectIndex.length <= 0 ? <div className="chk-placeholder">{this.state.placeholder}</div> :
                                 this.state.selectIndex.map((item, index) => {
                                     let selected = this.state.mapOptions.get(item);
                                     return (
                                         <span key={`checkitem_${index}`} className="selected-item">{selected ? selected.label: ''}
-                                            <span className="item-delete" onClick={this.closeItem.bind(this)}>&times;</span>
+                                            <span className="item-delete" index={item}>&times;</span>
                                         </span>
                                     )
                                 })
