@@ -1,5 +1,4 @@
 import React from 'react';
-// import RayrToggle from './lib/RayrToggle';
 import {RayrToggle} from 'react-rayr-toggle';
 
 function getStyleFn(ele, attr) {
@@ -17,7 +16,6 @@ class RayrSelector extends React.Component {
             selectIndex: -1
         };
     }
-
     componentDidMount() {
         this.processData(this.props);
     }
@@ -25,16 +23,6 @@ class RayrSelector extends React.Component {
     componentWillReceiveProps(newProps) {
         // 外部参数改变,就再重新更新数据，重新渲染
         this.processData(newProps);
-        // if(newProps.selected !== this.props.selected){
-        //     let selected = newProps.selected;
-        //     [...this.state.mapOptions].map((item) => {
-        //         if(selected.label === item[1].label && selected.value === item[1].value){
-        //             this.setState({
-        //                 selectIndex: item[0]
-        //             });
-        //         }
-        //     });
-        // }
     }
 
     processData(props) {

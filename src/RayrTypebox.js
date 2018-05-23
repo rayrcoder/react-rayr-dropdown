@@ -8,7 +8,9 @@ function getStyleFn(ele, attr) {
 class RayrTypebox extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+            value: ''
+        };
     }
 
     componentWillReceiveProps(newProps) {
@@ -37,6 +39,7 @@ class RayrTypebox extends React.Component {
 
     // 处理input输入时候的监控
     handleChange(e) {
+        console.log('input something!');
         let value = e.target.value;
         this.props.onTypeChange(value);
         if(value === ''){
@@ -66,6 +69,8 @@ class RayrTypebox extends React.Component {
     }
 
     render() {
+        let options = this.props.options || [];
+
         return (
             <RayrToggle className="type-box">
                 <RayrToggle.Top className="drop-header">
@@ -74,10 +79,10 @@ class RayrTypebox extends React.Component {
                 </RayrToggle.Top>
                 <RayrToggle.Box className="drop-main">
                     {
-                        this.props.options == null || this.props.options.length <= 0 ? <div className="drop-empty-result">无搜索结果</div> :
+                        (options == null || options.length <= 0) && this.state.value.length>0 ? <div className="drop-empty-result">无搜索结果</div> :
                         <ul className="drop-list">
                         {
-                            this.props.options.map((item, index) => {
+                            options.map((item, index) => {
                                 let itemCls = '';
                                 return (
                                     <li key={`input_${index}`} className={`${itemCls}`} onClick={this.itemClick.bind(this)} index={index} value={item.value}>{item.label}</li>

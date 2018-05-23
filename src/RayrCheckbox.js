@@ -74,10 +74,9 @@ class RayrCheckbox extends React.Component {
                     <div key={"checkbox_first"} ref={"dropHeader"} className="drop-header">
                         <div className="checkbox-value" onClick={this.inputClick.bind(this)}>
                             {
-                                this.state.selectIndex.length <= 0 ? this.state.placeholder :
+                                this.state.selectIndex.length <= 0 ? <div className="chk-placeholder">{this.state.placeholder}</div> :
                                 this.state.selectIndex.map((item, index) => {
                                     let selected = this.state.mapOptions.get(item);
-
                                     return (
                                         <span key={`checkitem_${index}`} className="selected-item">{selected ? selected.label: ''}
                                             <span className="item-delete" onClick={this.chkItemClick.bind(this)}>&times;</span>
@@ -85,9 +84,6 @@ class RayrCheckbox extends React.Component {
                                     )
                                 })
                             }
-                            {/* {
-                                this.state.isActive ? '' : <span className="dropdown-select-icon"></span>
-                            } */}
                         </div>
                     </div>
                 </RayrToggle.Top>
@@ -96,7 +92,6 @@ class RayrCheckbox extends React.Component {
                         <ul className="drop-list drop-checkbox-list">
                             {
                                 [...this.state.mapOptions].map((item, index) => {
-                                    // console.log(item);
                                     let itemCls = this.state.selectIndex.indexOf(index) !== -1 ? 'selected' : '';
                                     let cls = this.state.selectedList.indexOf(index.toString()) !== -1 ? 'selected' : '';
                                     return (

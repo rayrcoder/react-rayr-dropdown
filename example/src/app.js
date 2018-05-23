@@ -88,9 +88,26 @@ class App extends React.Component {
                 },{
                     value: 2,
                     label: '孙权'
+                },
+                {
+                    value: 3,
+                    label: '诸葛孔明'
+                },
+                {
+                    value: 4,
+                    label: '庞统'
+                },
+                {
+                    value: 5,
+                    label: '贾诩'
                 }
             ]
         })
+    }
+
+    reset() {
+        let selector = this.refs.selector_second;
+        selector.testFnc('外部传参!');
     }
 
     render() {
@@ -105,11 +122,12 @@ class App extends React.Component {
                         </div>
 
                         <div className="lg-box">
-                            <RayrSelector key={"1"} options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
+                            <RayrSelector ref="selector_second" key={"1"} options={this.state.selectOpts} selected={{}} placeholder={``} onChange={(item)=>{console.log(item)}} />
                         </div>
 
                         <div className="lg-box">
                             <RayrBtn type="primary" onClick={this.refresh.bind(this)}>更新数据</RayrBtn>
+                            {/* <RayrBtn type="primary" onClick={this.reset.bind(this)}>重置组件</RayrBtn> */}
                         </div>
                     </div>
                 </div>
@@ -132,37 +150,6 @@ class App extends React.Component {
                     </div>
                 </div>
 
-                {/* <div className="dropd-demo-box">
-                    <h4>单选框</h4>
-                    <RayrDropdown key={"1"} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
-                </div>
-
-                <div className="dropd-demo-box">
-                    <h4>单选框</h4>
-                    <RayrDropdown key={"1"} value={this.state.selectedItme} type="radio" options={this.state.selectOpts} placeholder={``} onChange={(item)=>{console.log(item)}} />
-                    <button onClick={this.refresh.bind(this)}>刷新</button>
-                </div>
-
-                <div className="dropd-demo-box">
-                    <h4>复选框</h4>
-                    <RayrDropdown type="checkbox" options={this.state.checkOpts} placeholder={`请点击此处进行选择`} onChange={(item)=>{}} />
-                </div>
-
-                <div className="dropd-demo-box">
-                    <h4>输入框</h4>
-                    <RayrDropdown type="input" options={this.state.inputOpts} placeholder={`点击此处进行输入`} onTypeChange={this.inputChange.bind(this)} onChange={(item)=>{console.log(item)}} />
-                </div> */}
-                {/* <div className="dropd-demo-box">
-                    <h4>Checkbox</h4>
-                    <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择checkbox`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
-                    <button onClick={this.refresh.bind(this)}>刷新</button>
-                </div>
-
-                <div className="dropd-demo-box">
-                    <h4>RayrTypebox</h4>
-                    <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
-                    <button onClick={this.refresh.bind(this)}>刷新</button>
-                </div> */}
             </div>
         )
     }
