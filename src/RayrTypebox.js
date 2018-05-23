@@ -14,7 +14,7 @@ class RayrTypebox extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.refs.typeInput);
+        // console.log(this.refs.typeInput);
         this.refs.typeInput.addEventListener('click', ()=>{
             this.inputClick();
         });

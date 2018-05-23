@@ -5,7 +5,7 @@ import 'react-rayr-dropdown/src/lib/RayrToggle.scss';
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox} from 'react-rayr-dropdown';
+import {RayrSelector, RayrMulSelector, RayrTypebox} from 'react-rayr-dropdown';
 import {RayrBtn} from 'react-rayr-btn';
 
 class App extends React.Component {
@@ -183,10 +183,10 @@ class App extends React.Component {
                     <h3>MultipleSelector 多选选择器</h3>
                     <div className="show-content">
                         <div className="md-box">
-                            <RayrCheckbox options={this.state.checkOpts} placeholder={`请选择（多选）`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
+                            <RayrMulSelector options={this.state.checkOpts} placeholder={`请选择（多选）`} selectedList={[this.state.selectedItme]} onChange={(item)=>{console.log(item)}} />
                         </div>
                         <div className="lg-box">
-                            <RayrCheckbox options={this.state.checkOpts2} selectedList={[]} placeholder={`请选择（多选）`} onChange={(item)=>{console.log(item)}} />
+                            <RayrMulSelector options={this.state.checkOpts2} selectedList={[]} placeholder={`请选择（多选）`} onChange={(item)=>{console.log(item)}} />
                         </div>
                         <div className="lg-box">
                             <RayrBtn type="primary" onClick={this.refresh.bind(this)}>更新数据</RayrBtn>

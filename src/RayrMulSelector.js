@@ -1,7 +1,7 @@
 import React from 'react';
 import {RayrToggle} from 'react-rayr-toggle';
 
-class RayrCheckbox extends React.Component {
+class RayrMulSelector extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -117,4 +117,4 @@ class RayrCheckbox extends React.Component {
     }
 }
 
-export default RayrCheckbox;
+export default RayrMulSelector;

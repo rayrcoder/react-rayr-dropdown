@@ -1,6 +1,6 @@
 import RayrDropdown from './RayrDropdown';
 import RayrSelector from './RayrSelector';
-import RayrCheckbox from './RayrCheckbox';
+import RayrMulSelector from './RayrMulSelector';
 import RayrTypebox from './RayrTypebox';
 
-export {RayrDropdown, RayrSelector, RayrCheckbox, RayrTypebox};
+export {RayrDropdown, RayrSelector, RayrMulSelector, RayrTypebox};
