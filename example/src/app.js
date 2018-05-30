@@ -73,6 +73,7 @@ class App extends React.Component {
                 }
             ],
             inputOpts: [],
+            inputOpts2: [],
             optMap: {
                 '广州': [{value: 0, label: '广州市'},{value: 1, label: '广州市海珠区'},{value: 2, label: '广州大学城'}],
                 '北京': [{value: 0, label: '北京西单'},{value: 1, label: '北京三里屯'},{value: 2, label: '北京五道口'}],
@@ -201,7 +202,7 @@ class App extends React.Component {
                             <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
                         </div>
                         <div className="lg-box">
-                            <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
+                            <RayrTypebox options={this.state.inputOpts2} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
                         </div>
                     </div>
                 </div>

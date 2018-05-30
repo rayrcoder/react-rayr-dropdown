@@ -17,12 +17,6 @@ class RayrTypebox extends React.Component {
 
     componentDidMount() {
         this.refs.typeInput.addEventListener('click', (e)=>{
-            /*
-            * 阻止事件向toggle组件传递
-            * 劫持事件
-            * 由typebox组件本身控制搜索结果的显示与否
-            * */
-            e.stopPropagation();
             this.inputClick();
         });
     }
@@ -71,6 +65,7 @@ class RayrTypebox extends React.Component {
     }
 
     itemClick(e) {
+        console.log('item click');
         let value = e.target.value;
         let index = e.target.getAttribute('index');// 利用index标示当前选中的选项
         let label = e.target.innerHTML;
@@ -84,19 +79,34 @@ class RayrTypebox extends React.Component {
 
     inputClick() {
         console.log('input click');
+        if(this.state.value !== ''){
+            this.setState({
+                isActive: true
+            });
+        }
+    }
+
+    handleBlur() {
+        console.log('input blur');
+        setTimeout(()=>{
+            this.setState({
+                isActive: false
+            });
+        }, 50);
     }
 
     render() {
         let options = this.props.options || [];
-        let selMainCls = this.state.value === '' ? `` : `border`;
-        console.log(selMainCls);
+        let dropMainCls = this.state.isActive ? 'active' : '';
+
+        console.log(dropMainCls);
         return (
-            <RayrToggle className="type-box">
+            <RayrToggle className="type-box" ref={"typeBoxWrapper"}>
                 <RayrToggle.Top className="drop-header">
-                    <input ref="typeInput" type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
+                    <input ref="typeInput" type="text" value={this.state.value || ''} onBlur={this.handleBlur.bind(this)} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
                     <span className="dropdown-search-icon"></span>
                 </RayrToggle.Top>
-                <RayrToggle.Box className={`drop-main ${selMainCls}`}>
+                <RayrToggle.Box className={`drop-main ${dropMainCls}`}>
                     {
                         (options == null || options.length <= 0) && this.state.value.length>0 ? <div className="drop-empty-result">无搜索结果</div> :
                         <ul className="drop-list">
