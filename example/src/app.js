@@ -200,6 +200,9 @@ class App extends React.Component {
                         <div className="md-box">
                             <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
                         </div>
+                        <div className="lg-box">
+                            <RayrTypebox options={this.state.inputOpts} placeholder={`点击此处进行输入`} onChange={(item)=>{console.log(item)}} onTypeChange={this.inputChange.bind(this)} />
+                        </div>
                     </div>
                 </div>
             </div>

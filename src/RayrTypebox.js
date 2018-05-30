@@ -9,13 +9,20 @@ class RayrTypebox extends React.Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            value: '',
+            resultList: [],
+            isActive: false
         };
     }
 
     componentDidMount() {
-        // console.log(this.refs.typeInput);
-        this.refs.typeInput.addEventListener('click', ()=>{
+        this.refs.typeInput.addEventListener('click', (e)=>{
+            /*
+            * 阻止事件向toggle组件传递
+            * 劫持事件
+            * 由typebox组件本身控制搜索结果的显示与否
+            * */
+            e.stopPropagation();
             this.inputClick();
         });
     }
@@ -81,14 +88,15 @@ class RayrTypebox extends React.Component {
 
     render() {
         let options = this.props.options || [];
-
+        let selMainCls = this.state.value === '' ? `` : `border`;
+        console.log(selMainCls);
         return (
             <RayrToggle className="type-box">
                 <RayrToggle.Top className="drop-header">
-                    <input ref="typeInput" type="text" onClick={this.inputClick.bind(this)} value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
+                    <input ref="typeInput" type="text" value={this.state.value || ''} onChange={this.handleChange.bind(this)} placeholder={this.props.placeholder || '请选择'} />
                     <span className="dropdown-search-icon"></span>
                 </RayrToggle.Top>
-                <RayrToggle.Box className="drop-main">
+                <RayrToggle.Box className={`drop-main ${selMainCls}`}>
                     {
                         (options == null || options.length <= 0) && this.state.value.length>0 ? <div className="drop-empty-result">无搜索结果</div> :
                         <ul className="drop-list">
