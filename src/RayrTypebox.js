@@ -22,7 +22,6 @@ class RayrTypebox extends React.Component {
     }
 
     componentWillReceiveProps(newProps) {
-        console.log(newProps);
     }
 
     getTranslateY(header, body) {
@@ -47,7 +46,6 @@ class RayrTypebox extends React.Component {
 
     // 处理input输入时候的监控
     handleChange(e) {
-        console.log('input something!');
         let value = e.target.value;
         this.props.onTypeChange(value);
         if(value === ''){
@@ -65,7 +63,6 @@ class RayrTypebox extends React.Component {
     }
 
     itemClick(e) {
-        console.log('item click');
         let value = e.target.value;
         let index = e.target.getAttribute('index');// 利用index标示当前选中的选项
         let label = e.target.innerHTML;
@@ -78,7 +75,6 @@ class RayrTypebox extends React.Component {
     }
 
     inputClick() {
-        console.log('input click');
         if(this.state.value !== ''){
             this.setState({
                 isActive: true
@@ -87,19 +83,17 @@ class RayrTypebox extends React.Component {
     }
 
     handleBlur() {
-        console.log('input blur');
-        setTimeout(()=>{
-            this.setState({
-                isActive: false
-            });
-        }, 50);
+        // setTimeout(()=>{
+        //     this.setState({
+        //         isActive: false
+        //     });
+        // }, 50);
     }
 
     render() {
         let options = this.props.options || [];
         let dropMainCls = this.state.isActive ? 'active' : '';
 
-        console.log(dropMainCls);
         return (
             <RayrToggle className="type-box" ref={"typeBoxWrapper"}>
                 <RayrToggle.Top className="drop-header">

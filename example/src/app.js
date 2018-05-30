@@ -84,6 +84,7 @@ class App extends React.Component {
     }
 
     inputChange(value) {
+        console.log(value);
         let str = value.split('');
         let opts = [];
 
